@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/hayanmeri/Downloads/junit-jupiter-api-5.10.2.jar",
+        "/Users/hayanmeri/Downloads/junit-jupiter-engine-6.1.0-M1.jar",
+        "/Users/hayanmeri/Downloads/junit-platform-commons-6.1.0-M1.jar"
+    ]
+}
