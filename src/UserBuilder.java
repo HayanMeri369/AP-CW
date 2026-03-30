@@ -1,3 +1,6 @@
+/**
+ * Builder for creating validated {@code User} instances.
+ */
 public class UserBuilder {
     private String id;
     private Role role;

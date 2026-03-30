@@ -1,3 +1,6 @@
+/**
+ * Represents a system user identified by an ID and assigned role.
+ */
 public class User {
     private String id;
     private Role role;

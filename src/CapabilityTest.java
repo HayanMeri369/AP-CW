@@ -6,19 +6,19 @@ public class CapabilityTest {
 
     @Test
     public void testStudentReadInternal() {
-        // 1. Setup the integrated system
+        // Configure the access policy and capability factory.
         AccessPolicy policy = new DefaultAccessPolicy();
         CapabilityFactory factory = new PolicyBasedCapabilityFactory(policy);
 
-        // 2. Create Student accessing Internal material
+        // Create a student and the lecture resource being requested.
         User student = new UserBuilder().setID("s1").setRole(Role.STUDENT).build();
         Resource<AccessScope> lecture = new LectureMaterial();
 
-        // 3. Request capability (Expect ALLOW)
+        // Ask the factory for a read capability for the student.
         Optional<Capability<? extends ReadAccess, Resource<AccessScope>>> cap = factory.issueReadCapability(student,
                 lecture);
 
-        // 4. Assertions
+        // Confirm that access is granted and the capability belongs to the student.
         assertTrue(cap.isPresent(), "Student should be granted read access to Internal material");
         assertEquals("s1", cap.get().getUser().getId());
         System.out.println("Running test: Student Reading Internal Material...");
@@ -34,15 +34,15 @@ public class CapabilityTest {
         AccessPolicy policy = new DefaultAccessPolicy();
         CapabilityFactory factory = new PolicyBasedCapabilityFactory(policy);
 
-        // 2. Create Guest accessing Internal material
+        // Create a guest user attempting to read the lecture resource.
         User guest = new UserBuilder().setID("g1").setRole(Role.GUEST).build();
         Resource<AccessScope> lecture = new LectureMaterial();
 
-        // 3. Request capability (Expect REFUSE)
+        // Request a read capability and expect the policy to reject it.
         Optional<Capability<? extends ReadAccess, Resource<AccessScope>>> cap = factory.issueReadCapability(guest,
                 lecture);
 
-        // 4. Assertions
+        // Verify that no capability is returned for the guest.
         assertFalse(cap.isPresent(), "Guest must be denied access to Internal materials");
     }
 

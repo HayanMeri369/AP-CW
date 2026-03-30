@@ -1,6 +1,10 @@
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Base implementation of a capability that stores the user, resource,
+ * permission, and timestamp associated with an access grant.
+ */
 public abstract class AbstractCapability<P extends Permission, R extends Resource<?>> 
         implements Capability<P, R> {
     private final User user;

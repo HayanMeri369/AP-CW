@@ -6,7 +6,7 @@ public class Demo {
         CapabilityFactory factory = new PolicyBasedCapabilityFactory(policy);
 
         User student = new UserBuilder().setID("s1").setRole(Role.STUDENT).build();
-        Resource<?> lecture = new LectureMaterial(); // Ensure LectureMaterial.java exists
+        Resource<?> lecture = new LectureMaterial(); // Sample lecture resource used in the demo.
 
         Optional<Capability<? extends ReadAccess, Resource<?>>> cap = 
             factory.issueReadCapability(student, lecture);

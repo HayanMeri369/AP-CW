@@ -15,7 +15,7 @@ public class PolicyBasedCapabilityFactory implements CapabilityFactory {
 
     @Override
     public <R extends Resource<?>> Optional<Capability<? extends WriteAccess, R>> issueWriteCapability(User user, R resource) {
-        // Implementation for write access check...
+        // Write capability issuance is not implemented yet.
         return Optional.empty(); 
     }
 }

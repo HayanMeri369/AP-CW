@@ -1,3 +1,6 @@
+/**
+ * Generic base type for resources protected by an access scope.
+ */
 public abstract class Resource<S> {
     private String name;
     private S scope;
