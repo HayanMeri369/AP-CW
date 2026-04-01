@@ -13,9 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for the logging layer: AccessResult, LogEntry, and AuditLog.
- */
+
 class LogTest {
 
     private static final LocalDateTime FIXED_TIME =
@@ -26,9 +24,9 @@ class LogTest {
         AuditLog.getInstance().clearForTesting();
     }
 
-    // -----------------------------------------------------------------------
+
     // AccessResult
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testAccessResultValuesExist() {
@@ -37,9 +35,8 @@ class LogTest {
         assertEquals(2, AccessResult.values().length);
     }
 
-    // -----------------------------------------------------------------------
-    // LogEntry — field storage and formatting
-    // -----------------------------------------------------------------------
+
+    // LogEntry  field storage and formatting
 
     @Test
     void testLogEntryStoresFieldsCorrectly() {
@@ -83,9 +80,9 @@ class LogTest {
         assertNotNull(entry.getTimestamp());
     }
 
-    // -----------------------------------------------------------------------
-    // LogEntry — validation
-    // -----------------------------------------------------------------------
+
+    // LogEntry  validation
+
 
     @Test
     void testLogEntryThrowsIfUserIdIsBlank() {
@@ -111,9 +108,9 @@ class LogTest {
         );
     }
 
-    // -----------------------------------------------------------------------
-    // AuditLog — Singleton
-    // -----------------------------------------------------------------------
+
+    // AuditLog
+
 
     @Test
     void testAuditLogSingletonReturnsSameInstance() {
@@ -123,9 +120,7 @@ class LogTest {
                 "AuditLog.getInstance() must always return the same object");
     }
 
-    // -----------------------------------------------------------------------
-    // AuditLog — storage
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testAuditLogStoresEntry() {
@@ -167,9 +162,6 @@ class LogTest {
         assertThrows(UnsupportedOperationException.class, () -> all.add(null));
     }
 
-    // -----------------------------------------------------------------------
-    // AuditLog — filtering
-    // -----------------------------------------------------------------------
 
     @Test
     void testFilterByUser() {
