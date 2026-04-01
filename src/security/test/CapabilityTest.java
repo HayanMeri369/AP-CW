@@ -9,10 +9,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for the capability layer: ReadCapability, WriteCapability,
- * ReadWriteCapability, and PolicyBasedCapabilityFactory.
- */
+
 class CapabilityTest {
 
     private final DefaultAccessPolicy  policy  = new DefaultAccessPolicy();
@@ -27,9 +24,9 @@ class CapabilityTest {
     private final Resource<AccessScope> lecture  = new LectureMaterial();
     private final Resource<AccessScope> examPaper = new ExamPaper();
 
-    // -----------------------------------------------------------------------
-    // Read capability — granted cases
-    // -----------------------------------------------------------------------
+
+    // read capability granted cases
+
 
     @Test
     void testStudentGrantedReadOnInternalResource() {
@@ -55,9 +52,8 @@ class CapabilityTest {
         assertTrue(cap.isPresent(), "Admin should be granted read access to CONFIDENTIAL resource");
     }
 
-    // -----------------------------------------------------------------------
-    // Read capability — denied cases
-    // -----------------------------------------------------------------------
+    // read capability denied cases
+
 
     @Test
     void testGuestDeniedReadOnInternalResource() {
@@ -73,9 +69,9 @@ class CapabilityTest {
         assertFalse(cap.isPresent(), "Student must be denied read access to CONFIDENTIAL resource");
     }
 
-    // -----------------------------------------------------------------------
-    // Write capability — granted cases
-    // -----------------------------------------------------------------------
+
+    // Write capability granted cases COME BACK
+
 
     @Test
     void testStaffGrantedWriteOnInternalResource() {
@@ -91,9 +87,8 @@ class CapabilityTest {
         assertTrue(cap.isPresent(), "Admin should be granted write access to CONFIDENTIAL resource");
     }
 
-    // -----------------------------------------------------------------------
-    // Write capability — denied cases
-    // -----------------------------------------------------------------------
+    // Write capability denied cases
+
 
     @Test
     void testStudentDeniedWrite() {
@@ -109,9 +104,8 @@ class CapabilityTest {
         assertFalse(cap.isPresent(), "Guest must not be granted write access");
     }
 
-    // -----------------------------------------------------------------------
     // ReadWrite capability
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testAdminGrantedReadWriteCapability() {
@@ -130,9 +124,8 @@ class CapabilityTest {
         assertFalse(cap.isPresent(), "Student must not receive a ReadWrite capability");
     }
 
-    // -----------------------------------------------------------------------
     // Capability fields
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testCapabilityStoresCorrectResource() {
