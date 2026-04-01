@@ -6,23 +6,7 @@ import security.model.Role;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * An immutable record of a single access control event.
- *
- * Fields captured:
- *   timestamp    — when the access attempt occurred
- *   userId       — ID of the user who made the request
- *   role         — role of that user at the time of the request
- *   resourceName — name of the resource being accessed
- *   operation    — READ or WRITE
- *   result       — ALLOW or REFUSE
- *
- * Immutability is intentional: once an event is recorded it cannot be
- * tampered with, which is essential for a trustworthy audit log.
- *
- * Output format:
- *   20-01-2025 16:00, user2, ADMIN, Exam Paper, WRITE, ALLOW
- */
+
 public class LogEntry {
 
     private static final DateTimeFormatter FORMATTER =
@@ -35,9 +19,7 @@ public class LogEntry {
     private final Operation     operation;
     private final AccessResult  result;
 
-    /**
-     * Creates a new LogEntry stamped with the current time.
-     */
+    /* creates a new LogEntry stamped with the current tim*/
     public LogEntry(String userId,
                     Role role,
                     String resourceName,
@@ -46,10 +28,6 @@ public class LogEntry {
         this(LocalDateTime.now(), userId, role, resourceName, operation, result);
     }
 
-    /**
-     * Creates a LogEntry with an explicit timestamp.
-     * Useful in tests where a predictable timestamp is needed.
-     */
     public LogEntry(LocalDateTime timestamp,
                     String userId,
                     Role role,
@@ -84,10 +62,7 @@ public class LogEntry {
     public Operation     getOperation()    { return operation; }
     public AccessResult  getResult()       { return result; }
 
-    /**
-     * Returns the entry in the format specified by the coursework:
-     *   20-01-2025 16:00, user2, ADMIN, Exam Paper, WRITE, ALLOW
-     */
+
     @Override
     public String toString() {
         return String.join(", ",
