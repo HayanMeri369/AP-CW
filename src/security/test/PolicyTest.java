@@ -10,14 +10,9 @@ import security.policy.DefaultAccessPolicy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for the access policy layer: DefaultAccessPolicy and AccessController.
- *
- * Access rules under test:
- *   GUEST   → PUBLIC READ only
- *   STUDENT → PUBLIC + INTERNAL READ only
- *   STAFF   → PUBLIC + INTERNAL READ and WRITE
- *   ADMIN   → everything
+/*
+ Tests for the access policy layer DefaultAccessPolicy and AccessController
+
  */
 class PolicyTest {
 
@@ -40,9 +35,8 @@ class PolicyTest {
         controller = new AccessController(policy, AuditLog.getInstance());
     }
 
-    // -----------------------------------------------------------------------
     // GUEST rules
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testGuestAllowedPublicRead() {
@@ -64,9 +58,9 @@ class PolicyTest {
         assertFalse(policy.isAllowed(guest, examPaper, Operation.READ));
     }
 
-    // -----------------------------------------------------------------------
+
     // STUDENT rules
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testStudentAllowedPublicRead() {
@@ -93,9 +87,9 @@ class PolicyTest {
         assertFalse(policy.isAllowed(student, examPaper, Operation.WRITE));
     }
 
-    // -----------------------------------------------------------------------
+
     // STAFF rules
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testStaffAllowedPublicReadWrite() {
@@ -115,9 +109,8 @@ class PolicyTest {
         assertFalse(policy.isAllowed(staff, examPaper, Operation.WRITE));
     }
 
-    // -----------------------------------------------------------------------
     // ADMIN rules
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testAdminAllowedEverything() {
@@ -129,9 +122,8 @@ class PolicyTest {
         assertTrue(policy.isAllowed(admin, examPaper, Operation.WRITE));
     }
 
-    // -----------------------------------------------------------------------
-    // AccessController — result and logging
-    // -----------------------------------------------------------------------
+    // AccessController result and logging
+
 
     @Test
     void testControllerReturnsAllowForPermittedRequest() {
