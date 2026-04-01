@@ -5,15 +5,11 @@ import security.model.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Tests for the core model layer: Role, AccessScope, User, UserBuilder,
- * and all three Resource subclasses.
- */
+
 class ModelTest {
 
-    // -----------------------------------------------------------------------
     // Role enum
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testRoleValuesExist() {
@@ -24,9 +20,8 @@ class ModelTest {
         assertEquals(4, Role.values().length);
     }
 
-    // -----------------------------------------------------------------------
     // AccessScope enum
-    // -----------------------------------------------------------------------
+
 
     @Test
     void testAccessScopeValuesExist() {
@@ -36,9 +31,8 @@ class ModelTest {
         assertEquals(3, AccessScope.values().length);
     }
 
-    // -----------------------------------------------------------------------
-    // User and UserBuilder
-    // -----------------------------------------------------------------------
+        // User and UserBuilder
+
 
     @Test
     void testUserBuilderCreatesUserWithCorrectFields() {
@@ -76,9 +70,9 @@ class ModelTest {
         assertSame(builder, builder.setRole(Role.ADMIN));
     }
 
-    // -----------------------------------------------------------------------
-    // Resource subclasses — correct names and scopes
-    // -----------------------------------------------------------------------
+
+    // Resource subclasses correct names and scopes
+
 
     @Test
     void testPrinterHasPublicScope() {
